@@ -2,7 +2,12 @@ package com.denniscode.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 @Component
 public class TennisCoach implements Coach{
@@ -18,6 +23,18 @@ public class TennisCoach implements Coach{
     public TennisCoach(){
         System.out.println(">> inside default tennis constructor");
     }
+
+    //define postConstruct
+    @PostConstruct
+    public void beforeConstruct(){
+        System.out.println("before construct");
+    }
+
+    @PreDestroy
+    public void afterConstruct(){
+        System.out.println("after construct");
+    }
+
 
     // define a setter method
 //    @Autowired
